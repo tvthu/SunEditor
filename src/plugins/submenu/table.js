@@ -201,6 +201,7 @@ export default {
         }
         tableHTML += '</tbody>';
         oTable.innerHTML = tableHTML;
+        oTable.style = 'border: 1px solid #e1e1e1;border-collapse: collapse;';
 
         const changed = this.insertComponent(oTable, false, true, false);
         
@@ -217,12 +218,13 @@ export default {
         if (!returnElement) {
             let cellsHTML = '';
             while (cnt > 0) {
-                cellsHTML += '<' +nodeName + '><div><br></div></' + nodeName + '>';
+                cellsHTML += '<' +nodeName + ' style="border: 1px solid #e1e1e1;"><div><br></div></' + nodeName + '>';
                 cnt--;
             }
             return cellsHTML;
         } else {
             const cell = this.util.createElement(nodeName);
+            cell.style = 'border: 1px solid #e1e1e1;'
             cell.innerHTML = '<div><br></div>';
             return cell;
         }
@@ -1389,6 +1391,7 @@ export default {
 
         switch (command) {
             case 'insert':
+                console.log('insert table');
             case 'delete':
                 tablePlugin.editTable.call(this, value, option);
                 break;
